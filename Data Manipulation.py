@@ -11,9 +11,11 @@ df['service fee'].replace({'\$': '', ',': ''}, regex=True, inplace=True)
 df['price'] = pd.to_numeric(df['price'])
 df['service fee'] = pd.to_numeric(df['service fee'])
 
+#make the steps in the program visible for the user
 def print_separator():
-    print("-" * 40)
-    
+    print("-" * 100)
+
+#function to display the first 5 rows of the dataset    
 def display_first_rows(df):
     print_separator()
     print("Here are the first 5 rows:")
@@ -21,10 +23,11 @@ def display_first_rows(df):
     print(df.head())
     print_separator()
 
-#Get valid start and end row numbers from the user and display the rows in between
+#get valid start and end row numbers from the user and display the rows in between
 def display_specific_rows(df):
     print_separator()
-    print("Enter the row numbers you want to see:")
+    print("Enter the row numbers you want to see: (number must be between 0 and '{}')".format(len(df)))
+
     try:
         start = int(input("Start row: "))
         if start < 0 or start >= len(df):
@@ -44,9 +47,10 @@ def display_specific_rows(df):
         return
 
     print_separator()
-    print(df[start:end])
+    print(df[start:end+1])
     print_separator()
 
+#function to get some statstical data for a selected column
 def display_column_statistics(df):
     print_separator()
     print("Columns in the dataset:")
