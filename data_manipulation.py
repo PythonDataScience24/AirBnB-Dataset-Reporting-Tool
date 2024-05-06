@@ -1,3 +1,11 @@
+"""
+This module provides classes and functions for exploring and analyzing an airbnb dataset.
+It provides the user 4 different functionalities.
+1. Show first rows
+2. Choose which rows to show
+3. Show statistical summary for a column
+4. Show cost information by neighborhood and room type
+"""
 import pandas as pd
 
 
@@ -7,7 +15,7 @@ class FirstRowsDisplay:
     """
 
     def __init__(self, data_frame):
-        self.df = data_frame
+        self.data_frame = data_frame
 
     def display_first_rows(self):
         """
@@ -16,7 +24,7 @@ class FirstRowsDisplay:
         print_separator()
         print("Here are the first 5 rows:")
         print_separator()
-        print(self.df.head())
+        print(self.data_frame.head())
         print_separator()
 
 
@@ -26,7 +34,7 @@ class ColumnStatistics:
     """
 
     def __init__(self, data_frame):
-        self.df = data_frame
+        self.data_frame = data_frame
 
     def display_column_statistics(self):
         """
@@ -34,13 +42,13 @@ class ColumnStatistics:
         """
         print_separator()
         print("Columns in the dataset:")
-        print(self.df.columns)
+        print(self.data_frame.columns)
         print_separator()
         column_name = input("\nStatistic summary of the following column: ")
-        if column_name in self.df.columns:
+        if column_name in self.data_frame.columns:
             print_separator()
-            print("Summary statistics for '{}':".format(column_name))
-            print(self.df[column_name].describe())
+            print(f"Summary statistics for '{column_name}':")
+            print(self.data_frame[column_name].describe())
             print_separator()
         else:
             print("Column not found.")
@@ -52,14 +60,18 @@ class SpecificRowsDisplay:
     """
 
     def __init__(self, data_frame):
-        self.df = data_frame
+        self.data_frame = data_frame
 
     def display_specific_rows(self):
+        """
+        Method to display specific rows of the data frame.
+        The user can enter the first and last row (excluded) that he wants to see.
+        """
         print_separator()
         print("Enter the row numbers you want to see:")
         try:
             start = int(input("Start row: "))
-            if start < 0 or start >= len(self.df):
+            if start < 0 or start >= len(self.data_frame):
                 print("Invalid start row. Please enter a valid row number.")
                 return
         except ValueError:
@@ -68,7 +80,7 @@ class SpecificRowsDisplay:
 
         try:
             end = int(input("End row: "))
-            if end < 0 or end >= len(self.df):
+            if end < 0 or end >= len(self.data_frame):
                 print("Invalid end row. Please enter a valid row number.")
                 return
         except ValueError:
@@ -76,26 +88,27 @@ class SpecificRowsDisplay:
             return
 
         print_separator()
-        print(self.df[start:end])
+        print(self.data_frame[start:end])
         print_separator()
-
 
 
 class NeighborhoodAnalyzer:
     """
-    Class to get informations, using the neighborhood and room type.
+    Class to get information, using the neighborhood and room type.
     """
+
     def __init__(self, data_frame):
-        self.df = data_frame
+        self.data_frame = data_frame
 
     def display_neighborhood_info(self, neighborhood, room_type):
         """
-        Method to display informations, using the neighborhood and room
+        Method to display information, using the neighborhood and room
         :param neighborhood:
         :param room_type:
         :return:
         """
-        filtered_data = self.df[(self.df['neighbourhood'] == neighborhood) & (self.df['room type'] == room_type)]
+        filtered_data = self.data_frame[(self.data_frame['neighbourhood'] == neighborhood)
+                                        & (self.data_frame['room type'] == room_type)]
         if filtered_data.empty:
             return None
 
@@ -111,14 +124,14 @@ class NeighborhoodAnalyzer:
         }
 
 
-# load csv
+# Load csv file
 df = pd.read_csv('./Airbnb_Open_Data.csv')
 
-# remove the "$" and remove the thousand ","
-df['price'].replace({'\$': '', ',': ''}, regex=True, inplace=True)
-df['service fee'].replace({'\$': '', ',': ''}, regex=True, inplace=True)
+# Remove the "$" and remove the thousand ","
+df['price'].replace({r'\$': '', ',': ''}, regex=True, inplace=True)
+df['service fee'].replace({r'\$': '', ',': ''}, regex=True, inplace=True)
 
-# make it numeric
+# Make it numeric
 df['price'] = pd.to_numeric(df['price'])
 df['service fee'] = pd.to_numeric(df['service fee'])
 
@@ -134,8 +147,6 @@ def print_separator():
 def get_neighborhoods():
     """
     Getter for the neighborhoods
-    :param self:
-    :return:
     """
     return df['neighbourhood'].unique()
 
