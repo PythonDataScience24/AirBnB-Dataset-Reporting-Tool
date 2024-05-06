@@ -1,21 +1,37 @@
 import pandas as pd
 
+
 class FirstRowsDisplay:
+    """
+    Class for displaying first 5 rows of a dataframe
+    """
+
     def __init__(self, data_frame):
         self.df = data_frame
 
     def display_first_rows(self):
+        """
+        Method to display first 5 rows of a dataframe
+        """
         print_separator()
         print("Here are the first 5 rows:")
         print_separator()
         print(self.df.head())
         print_separator()
 
+
 class ColumnStatistics:
+    """
+    Class for displaying column statistics of a specific column
+    """
+
     def __init__(self, data_frame):
         self.df = data_frame
 
     def display_column_statistics(self):
+        """
+        Method to display column statistics of a specific column
+        """
         print_separator()
         print("Columns in the dataset:")
         print(self.df.columns)
@@ -29,7 +45,12 @@ class ColumnStatistics:
         else:
             print("Column not found.")
 
+
 class SpecificRowsDisplay:
+    """
+    Class to display specific rows of the dataframe.
+    """
+
     def __init__(self, data_frame):
         self.df = data_frame
 
@@ -58,12 +79,22 @@ class SpecificRowsDisplay:
         print(self.df[start:end])
         print_separator()
 
-#class to get the information using the neighborhood and room type
+
+
 class NeighborhoodAnalyzer:
+    """
+    Class to get informations, using the neighborhood and room type.
+    """
     def __init__(self, data_frame):
         self.df = data_frame
 
     def display_neighborhood_info(self, neighborhood, room_type):
+        """
+        Method to display informations, using the neighborhood and room
+        :param neighborhood:
+        :param room_type:
+        :return:
+        """
         filtered_data = self.df[(self.df['neighbourhood'] == neighborhood) & (self.df['room type'] == room_type)]
         if filtered_data.empty:
             return None
@@ -79,30 +110,49 @@ class NeighborhoodAnalyzer:
             'median_cost': median_cost
         }
 
-#load csv
+
+# load csv
 df = pd.read_csv('./Airbnb_Open_Data.csv')
 
-#remove the "$" and remove the thousand ","
+# remove the "$" and remove the thousand ","
 df['price'].replace({'\$': '', ',': ''}, regex=True, inplace=True)
 df['service fee'].replace({'\$': '', ',': ''}, regex=True, inplace=True)
 
-#make it numeric
+# make it numeric
 df['price'] = pd.to_numeric(df['price'])
 df['service fee'] = pd.to_numeric(df['service fee'])
 
 
 def print_separator():
+    """
+    Method used to print a separator line
+    :return:
+    """
     print("-" * 40)
 
-def get_neighborhoods(self):
-    return self.df['neighbourhood'].unique()
 
-def get_room_types(self):
-    return self.df['room type'].unique()
+def get_neighborhoods():
+    """
+    Getter for the neighborhoods
+    :param self:
+    :return:
+    """
+    return df['neighbourhood'].unique()
 
 
-#main function for explorers
+def get_room_types():
+    """
+    Getter for the room types
+    """
+    return df['room type'].unique()
+
+
+# main function for explorers
 def explore_dataset():
+    """
+    Method to explore the dataset by providing a menu-driven
+    interface to interact with various functionalities.
+    """
     while True:
         print("\nWhat are your wishes?\n")
         print("1. Show first rows")
@@ -125,7 +175,7 @@ def explore_dataset():
             print(df['neighbourhood'])
             neighborhood = input("Enter neighborhood: ")
             print(df['room type'])
-            neighborhood_analyzer = NeighborhoodAnalyzer(df) #using the class the class
+            neighborhood_analyzer = NeighborhoodAnalyzer(df)  # using the class the class
             room_type = input("Enter room type: ")
             cost_info = neighborhood_analyzer.display_neighborhood_info(neighborhood, room_type)
             if cost_info:
@@ -145,8 +195,6 @@ def explore_dataset():
         else:
             print("Invalid choice. Please enter a valid option.")
 
-#call dora the explorer
+
+# call dora the explorer
 explore_dataset()
-
-
-
