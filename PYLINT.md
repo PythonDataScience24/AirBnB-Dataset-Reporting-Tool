@@ -1,5 +1,6 @@
 (base) PS C:\UniBe\Informatik\Datenwissenschaften\AirBnB-Dataset-Reporting-Tool> pylint "C:\UniBe\Informatik\Datenwissenschaften\AirBnB-Dataset-Reporting-Tool\Data Manipulation.py"
 ************* Module Data Manipulation
+
 **_Data Manipulation.py:98:0: C0301: Line too long (113/100) (line-too-long)_**
 
 **_Data Manipulation.py:118:22: W1401: Anomalous backslash in string: '\$'. String constant might be missing an r prefix. (anomalous-backslash-in-string)_**
