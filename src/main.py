@@ -1,6 +1,16 @@
+"""
+This module provides an Interface to interact with the airbnb dataset.
+
+The options to explore the data are as follows:
+1. Show first rows
+2. Choose which rows you want to see
+3. Show statistical summary for a column
+4. Show cost information by neighborhood and room type
+5. Exit
+"""
+import pandas as pd
 import data_manipulation as dm
 import file_utils as fu
-import pandas as pd
 
 # Load data
 df = pd.read_csv('data/Airbnb_Open_Data.csv')

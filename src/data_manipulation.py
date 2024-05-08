@@ -6,17 +6,19 @@ It provides the user 4 different functionalities.
 3. Show statistical summary for a column
 4. Show cost information by neighborhood and room type
 """
+import file_utils as fu
 
-
-class FirstRowsDisplay:
+class FirstRowsDisplay: # pylint: disable=too-few-public-methods
     """
     Class for displaying first 5 rows of a dataframe
     """
     def __init__(self, data_frame):
+        """
+        Initializes an instance of the DataManipulation class.
+        """
         self.data_frame = data_frame
 
     def display_first_rows(self):
-        import file_utils as fu
         """
         Method to display first 5 rows of a dataframe
         """
@@ -27,16 +29,18 @@ class FirstRowsDisplay:
         fu.print_separator()
 
 
-class ColumnStatistics:
+class ColumnStatistics: # pylint: disable=too-few-public-methods
     """
     Class for displaying column statistics of a specific column
     """
 
     def __init__(self, data_frame):
+        """
+        Initializes an instance of the DataManipulation class.
+        """
         self.data_frame = data_frame
 
     def display_column_statistics(self):
-        import file_utils as fu
         """
         Method to display column statistics of a specific column
         """
@@ -54,16 +58,18 @@ class ColumnStatistics:
             print("Column not found.")
 
 
-class SpecificRowsDisplay:
+class SpecificRowsDisplay: # pylint: disable=too-few-public-methods
     """
     Class to display specific rows of the dataframe.
     """
 
     def __init__(self, data_frame):
+        """
+        Initializes an instance of the DataManipulation class.
+        """
         self.data_frame = data_frame
 
     def display_specific_rows(self):
-        import file_utils as fu
         """
         Method to display specific rows of the data frame.
         The user can enter the first and last row (excluded) that he wants to see.
@@ -93,16 +99,18 @@ class SpecificRowsDisplay:
         fu.print_separator()
 
 
-class NeighborhoodAnalyzer:
+class NeighborhoodAnalyzer: # pylint: disable=too-few-public-methods
     """
     Class to get information, using the neighborhood and room type.
     """
 
     def __init__(self, data_frame):
+        """
+        Initializes an instance of the DataManipulation class.
+        """
         self.data_frame = data_frame
 
     def display_neighborhood_info(self, neighborhood, room_type):
-        import file_utils as fu
         """
         Method to display information, using the neighborhood and room
         :param neighborhood:

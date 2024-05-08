@@ -1,3 +1,7 @@
+"""
+This module,provides utility functions for handling and manipulating 
+data for the AirBnB Dataset Reporting Tool.
+"""
 import pandas as pd
 
 # Load data
