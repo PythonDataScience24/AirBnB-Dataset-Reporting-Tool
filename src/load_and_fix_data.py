@@ -1,5 +1,5 @@
 """
-
+This module contains the LoadAndFixData class that loads the Airbnb dataset from a csv file and fixes the data.
 """
 import pandas as pd
 
