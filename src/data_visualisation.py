@@ -11,9 +11,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import file_utils as fu
+import load_and_fix_data as lf
 
 # Load data
-df = pd.read_csv('data/Airbnb_Open_Data.csv')
+df = lf.LoadAndFixData()
 
 def roomtype_selector():
     """

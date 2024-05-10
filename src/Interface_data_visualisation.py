@@ -8,9 +8,10 @@ options to visualize the data:
 """
 import pandas as pd
 import data_visualisation as dv
+import load_and_fix_data as lf
 
 # Load data
-df = pd.read_csv('data/Airbnb_Open_Data.csv')
+lf.load_and_fix_data()
 
 def visualize_dataset():
 

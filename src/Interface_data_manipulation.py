@@ -8,17 +8,10 @@ functions:
 """
 import pandas as pd
 import data_manipulation as dm
+import load_and_fix_data as lf
 
 # Load data
-df = pd.read_csv('data/Airbnb_Open_Data.csv')
-
-# Remove the "$" and remove the thousand ","3
-df['price'].replace({r'\$': '', ',': ''}, regex=True, inplace=True)
-df['service fee'].replace({r'\$': '', ',': ''}, regex=True, inplace=True)
-
-# Make it numeric
-df['price'] = pd.to_numeric(df['price'])
-df['service fee'] = pd.to_numeric(df['service fee'])
+df = lf.LoadAndFixData()
 
 def explore_dataset():
     """
