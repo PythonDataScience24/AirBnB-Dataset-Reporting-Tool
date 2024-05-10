@@ -6,71 +6,35 @@ The options to explore the data are as follows:
 2. Choose which rows you want to see
 3. Show statistical summary for a column
 4. Show cost information by neighborhood and room type
-5. Exit
+
+The options to visualize the data are as follows:
+1. Visualize cost information by room type
+2. Visualize cost information by neighborhood
+3. Visualize cost information by rating
 """
-import pandas as pd
-import data_manipulation as dm
-import file_utils as fu
+import Interface_data_manipulation as Idm
+import Interface_data_visualisation as Idv
 
-# Load data
-df = pd.read_csv('data/Airbnb_Open_Data.csv')
-
-# Remove the "$" and remove the thousand ","3
-df['price'].replace({r'\$': '', ',': ''}, regex=True, inplace=True)
-df['service fee'].replace({r'\$': '', ',': ''}, regex=True, inplace=True)
-
-# Make it numeric
-df['price'] = pd.to_numeric(df['price'])
-df['service fee'] = pd.to_numeric(df['service fee'])
-
-# main function for explorers
-def explore_dataset():
+def user_interface():
     """
-    Method to explore the dataset by providing a menu-driven
+    Method to interact with the airbnb dataset by providing a menu-driven
     interface to interact with various functionalities.
     """
     while True:
         print("\nWhat are your wishes?\n")
-        print("1. Show first rows")
-        print("2. Choose which rows you want to see")
-        print("3. Show statistical summary for a column")
-        print("4. Show cost information by neighborhood and room type")
-        print("5. Exit")
+        print("1. Explore the dataset")
+        print("2. Visualize the dataset")
+        print("3. Exit")
         choice = input("Choose wise: ")
-
         if choice == '1':
-            first_rows_display = dm.FirstRowsDisplay(df)
-            first_rows_display.display_first_rows()
+            Idm.explore_dataset()
         elif choice == '2':
-            specific_rows_display = dm.SpecificRowsDisplay(df)
-            specific_rows_display.display_specific_rows()
+            Idv.visualize_dataset()
         elif choice == '3':
-            column_stats = dm.ColumnStatistics(df)
-            column_stats.display_column_statistics()
-        elif choice == '4':
-            print(df['neighbourhood'])
-            neighborhood = input("Enter neighborhood: ")
-            print(df['room type'])
-            neighborhood_analyzer = dm.NeighborhoodAnalyzer(df)  # using the class the class
-            room_type = input("Enter room type: ")
-            cost_info = neighborhood_analyzer.display_neighborhood_info(neighborhood, room_type)
-            if cost_info:
-                fu.print_separator()
-                print("Cost Information:")
-                print("Neighborhood:", cost_info['neighborhood'])
-                print("Room Type:", cost_info['room type'])
-                print("Max Cost:", cost_info['max_cost'])
-                print("Min Cost:", cost_info['min_cost'])
-                print("Median Cost:", cost_info['median_cost'])
-                fu.print_separator()
-            else:
-                print("No data found for the given neighborhood and room type.")
-        elif choice == '5':
-            print("Thanks for your time, good bye!")
+            print("Thanks for your time, bye.")
             break
         else:
             print("Invalid choice. Please enter a valid option.")
 
-
-# call dora the explorer
-explore_dataset()
+# Run the user interface
+user_interface()

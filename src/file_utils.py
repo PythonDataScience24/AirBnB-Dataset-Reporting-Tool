@@ -13,7 +13,6 @@ def print_separator():
     """
     print("-" * 40)
 
-
 def get_neighborhoods():
     """
     Getter for the neighborhoods
