@@ -75,7 +75,8 @@ class SpecificRowsDisplay: # pylint: disable=too-few-public-methods
         The user can enter the first and last row (excluded) that he wants to see.
         """
         fu.print_separator()
-        print("Enter the row numbers you want to see:")
+        print("Enter the row numbers you want to see: (number must be between 0 and {})".format(len(self.data_frame)))
+        #print("Enter the row numbers you want to see:")
         try:
             start = int(input("Start row: "))
             if start < 0 or start >= len(self.data_frame):
@@ -95,7 +96,7 @@ class SpecificRowsDisplay: # pylint: disable=too-few-public-methods
             return
 
         fu.print_separator()
-        print(self.data_frame[start:end])
+        print(self.data_frame[start:end+1])
         fu.print_separator()
 
 

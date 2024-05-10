@@ -11,7 +11,7 @@ def print_separator():
     """
     Method used to print a separator line
     """
-    print("-" * 40)
+    print("-" * 100)
 
 
 def get_neighborhoods():
