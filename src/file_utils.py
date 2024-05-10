@@ -7,11 +7,12 @@ import pandas as pd
 # Load data
 df = pd.read_csv('data/Airbnb_Open_Data.csv')
 
+
 def print_separator():
     """
     Method used to print a separator line
     """
-    print("-" * 40)
+    print("-" * 100)
 
 def get_neighborhoods():
     """
