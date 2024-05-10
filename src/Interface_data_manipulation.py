@@ -11,7 +11,8 @@ import data_manipulation as dm
 import load_and_fix_data as lf
 
 # Load data
-df = lf.LoadAndFixData()
+loader = lf.LoadAndFixData()
+df = loader.load_and_fix_data()
 
 def explore_dataset():
     """
@@ -25,7 +26,7 @@ def explore_dataset():
         print("3. Show statistical summary for a column")
         print("4. Show cost information by neighborhood and room type")
         print("5. Back to main menu")
-        choice = input("Choose wise: ")
+        choice = input("\nChoose wise: ")
 
         if choice == '1':
             first_rows_display = dm.FirstRowsDisplay(df)
@@ -37,23 +38,8 @@ def explore_dataset():
             column_stats = dm.ColumnStatistics(df)
             column_stats.display_column_statistics()
         elif choice == '4':
-            print(df['neighbourhood'])
-            neighborhood = input("Enter neighborhood: ")
-            print(df['room type'])
-            neighborhood_analyzer = dm.NeighborhoodAnalyzer(df)  # using the class the class
-            room_type = input("Enter room type: ")
-            cost_info = neighborhood_analyzer.display_neighborhood_info(neighborhood, room_type)
-            if cost_info:
-                print("-" * 40)
-                print("Cost Information:")
-                print("Neighborhood:", cost_info['neighborhood'])
-                print("Room Type:", cost_info['room type'])
-                print("Max Cost:", cost_info['max_cost'])
-                print("Min Cost:", cost_info['min_cost'])
-                print("Median Cost:", cost_info['median_cost'])
-                print("-" * 40)
-            else:
-                print("No data found for the given neighborhood and room type.")
+            neighbor_info = dm.NeighborhoodAnalyzer(df)
+            neighbor_info.display_neighborhood_info()
         elif choice == '5':
             break
         else:

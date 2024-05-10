@@ -14,6 +14,8 @@ The options to visualize the data are as follows:
 """
 import Interface_data_manipulation as Idm
 import Interface_data_visualisation as Idv
+import file_utils as fu
+
 
 def user_interface():
     """
@@ -25,7 +27,8 @@ def user_interface():
         print("1. Explore the dataset")
         print("2. Visualize the dataset")
         print("3. Exit")
-        choice = input("Choose wise: ")
+        choice = input("\nChoose wise: ")
+        fu.print_separator()
         if choice == '1':
             Idm.explore_dataset()
         elif choice == '2':

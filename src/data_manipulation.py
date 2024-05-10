@@ -7,6 +7,11 @@ It provides the user 4 different functionalities.
 4. Show cost information by neighborhood and room type
 """
 import file_utils as fu
+import load_and_fix_data as lf
+
+# Load data
+loader = lf.LoadAndFixData()
+df = loader.load_and_fix_data()
 
 class FirstRowsDisplay: # pylint: disable=too-few-public-methods
     """
@@ -46,7 +51,8 @@ class ColumnStatistics: # pylint: disable=too-few-public-methods
         """
         fu.print_separator()
         print("Columns in the dataset:")
-        print(self.data_frame.columns)
+        print(df.columns.unique())
+
         fu.print_separator()
         column_name = input("\nStatistic summary of the following column: ")
         if column_name in self.data_frame.columns:
@@ -56,6 +62,7 @@ class ColumnStatistics: # pylint: disable=too-few-public-methods
             fu.print_separator()
         else:
             print("Column not found.")
+            fu.print_separator()
 
 
 class SpecificRowsDisplay: # pylint: disable=too-few-public-methods
@@ -81,18 +88,22 @@ class SpecificRowsDisplay: # pylint: disable=too-few-public-methods
             start = int(input("Start row: "))
             if start < 0 or start >= len(self.data_frame):
                 print("Invalid start row. Please enter a valid row number.")
+                fu.print_separator()
                 return
         except ValueError:
             print("Invalid input. Please enter a valid integer.")
+            fu.print_separator()
             return
 
         try:
             end = int(input("End row: "))
             if end < 0 or end >= len(self.data_frame):
                 print("Invalid end row. Please enter a valid row number.")
+                fu.print_separator()
                 return
         except ValueError:
             print("Invalid input. Please enter a valid integer.")
+            fu.print_separator()
             return
 
         fu.print_separator()
@@ -111,25 +122,38 @@ class NeighborhoodAnalyzer: # pylint: disable=too-few-public-methods
         """
         self.data_frame = data_frame
 
-    def display_neighborhood_info(self, neighborhood, room_type):
+    def display_neighborhood_info(self):
         """
-        Method to display information, using the neighborhood and room
-        :param neighborhood:
-        :param room_type:
-        :return:
+        Method to display information about the neighborhood and room
         """
+        fu.print_separator()
+        print("Neighborhoods to select from: ")
+        print(df['neighbourhood'].unique())
+
+        fu.print_separator()
+        neighborhood = input("Choose a neighborhood: ")
+
+        fu.print_separator()
+        print(df['room type'].unique())
+
+        fu.print_separator()
+        room_type = input("Choose a room type: ")
+
         filtered_data = self.data_frame[(self.data_frame['neighbourhood'] == neighborhood)
                                         & (self.data_frame['room type'] == room_type)]
         if filtered_data.empty:
-            return None
+            print("No data found for the given neighborhood and room type.")
+            fu.print_separator()
+        else:
+            max_cost = filtered_data['price'].max()
+            min_cost = filtered_data['price'].min()
+            median_cost = filtered_data['price'].median()
 
-        max_cost = filtered_data['price'].max()
-        min_cost = filtered_data['price'].min()
-        median_cost = filtered_data['price'].median()
-        return {
-            'neighborhood': neighborhood,
-            'room type': room_type,
-            'max_cost': max_cost,
-            'min_cost': min_cost,
-            'median_cost': median_cost
-        }
+            fu.print_separator()
+            print("Cost Information:")
+            print("Neighborhood:", neighborhood)
+            print("Room Type:", room_type)
+            print("Max Cost:", max_cost)
+            print("Min Cost:", min_cost)
+            print("Median Cost:", median_cost)
+            fu.print_separator()

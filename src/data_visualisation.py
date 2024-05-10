@@ -7,23 +7,22 @@ It provides the user the following functionalities:
 3. Visualize cost information by rating
 
 """
-import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import file_utils as fu
 import load_and_fix_data as lf
 
 # Load data
-df = lf.LoadAndFixData()
+loader = lf.LoadAndFixData()
+df = loader.load_and_fix_data()
 
 def roomtype_selector():
     """
     Method to select the room type
     """
-    fu.print_separator()
     print("Room types available:")
-    fu.print_separator()
     print(df['room type'].unique())
+    fu.print_separator()
     room_type = input("Enter room type: ")
     return room_type
 
@@ -31,10 +30,9 @@ def neighborhood_selector():
     """
     Method to select the neighborhood
     """
-    fu.print_separator()
     print("Neighborhoods available:")
-    fu.print_separator()
     print(df['neighbourhood'].unique())
+    fu.print_separator()
     neighborhood = input("Enter neighborhood: ")
     return neighborhood
 
@@ -42,31 +40,28 @@ def visualisation_by_room_type(room_type):
     """
     Method to visualize the cost information by room type
     """
-    fu.print_separator()
     print("Cost information by room type:")
-    fu.print_separator()
     sns.set_theme(style="whitegrid")
     sns.barplot(x='room type', y='price', data=df[df['room type'] == room_type])
     plt.show()
+    fu.print_separator()
 
 def visualisation_by_neighborhood(neighborhood):
     """
     Method to visualize the cost information by neighborhood
     """
-    fu.print_separator()
     print("Cost information by neighborhood:")
-    fu.print_separator()
     sns.set_theme(style="whitegrid")
     sns.barplot(x='neighbourhood', y='price', data=df[df['neighbourhood'] == neighborhood])
     plt.show()
+    fu.print_separator()
 
 def visualisation_by_rating():
     """
     Method to visualize the cost information by rating
     """
-    fu.print_separator()
     print("Cost information by rating:")
-    fu.print_separator()
     sns.set_theme(style="whitegrid")
     sns.barplot(x='rating', y='price', data=df)
     plt.show()
+    fu.print_separator()

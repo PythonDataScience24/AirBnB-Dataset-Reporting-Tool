@@ -9,9 +9,11 @@ options to visualize the data:
 import pandas as pd
 import data_visualisation as dv
 import load_and_fix_data as lf
+import file_utils as fu
 
 # Load data
-lf.load_and_fix_data()
+loader = lf.LoadAndFixData()
+df = loader.load_and_fix_data()
 
 def visualize_dataset():
 
@@ -23,13 +25,15 @@ def visualize_dataset():
         print("2. Visualize cost information by neighborhood")
         print("3. Visualize cost information by rating")
         print("4. Back to main menu")
-        choice = input("Choose wise: ")
+        choice = input("\nChoose wise: ")
 
         if choice == '1':
+            fu.print_separator()
             print("Please enter the room type you want to visualize:")
             room_type = dv.roomtype_selector()
             dv.visualisation_by_room_type(room_type)
         elif choice == '2':
+            fu.print_separator()
             print("Please enter the neighborhood you want to visualize:")
             neighborhood = dv.neighborhood_selector()
             dv.visualisation_by_neighborhood(neighborhood) 

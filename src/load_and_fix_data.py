@@ -7,8 +7,8 @@ class LoadAndFixData:
     """
     a class to fix raw data in the csv file
     """
-    def __init__(self, file_path):
-        self.file_path = file_path
+    def __init__(self):
+        self.file_path = 'data/Airbnb_Open_Data.csv'
 
     def load_and_fix_data(self):
         """

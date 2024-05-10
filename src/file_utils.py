@@ -2,11 +2,12 @@
 This module,provides utility functions for handling and manipulating 
 data for the AirBnB Dataset Reporting Tool.
 """
-import pandas as pd
+
 import load_and_fix_data as lf
 
 # Load data
-df = lf.LoadAndFixData()
+loader = lf.LoadAndFixData()
+df = loader.load_and_fix_data()
 
 def print_separator():
     """
