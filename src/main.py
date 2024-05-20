@@ -40,4 +40,5 @@ def user_interface():
             print("Invalid choice. Please enter a valid option.")
 
 # Run the user interface
-user_interface()
+if __name__  == '__main__':
+    user_interface()

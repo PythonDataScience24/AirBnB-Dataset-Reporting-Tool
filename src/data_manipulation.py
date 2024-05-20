@@ -106,6 +106,7 @@ class SpecificRowsDisplay: # pylint: disable=too-few-public-methods
             fu.print_separator()
             return
 
+
         fu.print_separator()
         print(self.data_frame[start:end+1])
         fu.print_separator()
