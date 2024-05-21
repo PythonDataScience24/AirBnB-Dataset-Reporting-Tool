@@ -9,13 +9,13 @@ The tool allows users to explore, analyze, and visualize data related to Airbnb 
 ### Who 🧑🏻‍💻👩🏻‍💻
 The collaborators on this project are Nino Wyssmann, Raphael Reinalter, Martin Schnider and Susanne Liskova. We are Computer Science Students and are excited to start our first Python Project.
 
-### Goals ✨
+### Goals 🥅
 Our goal with this coding project is to develop a user-friendly tool that simplifies the process of exploring and analyzing Airbnb data. We aim to provide valuable insights to users, enabling them to optimize their Airbnb rental strategies and improve their business outcomes.
 
-## Why
+## Why ❓
 By engaging in this project, we aim to deepen our understanding of data manipulation, analysis, and visualization techniques in Python. Additionally, we aspire to enhance our collaboration and problem-solving abilities by working together as a team to create a functional and valuable tool for exploring Airbnb data.
 
-## What Makes It Special ❓ 
+## What Makes It Special ✨
 This project stands out for its simplicity, yet comprehensive functionality. It offers a seamless experience for users to manipulate data, select specific parameters for analysis, and generate dynamic visualizations, thereby providing actionable insights for optimizing Airbnb rental strategies.
 
 ## How to Get Started 🚀
