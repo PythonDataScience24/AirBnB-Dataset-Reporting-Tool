@@ -1,7 +1,7 @@
 # AirBnB Dataset Reporting Tool
 
 ## How to use
-When you run the project you can navigate through the menues by entering the required input. In the first layer you can choose if you want to explore the dataset or if you want to visualize some data. In the second layer you can then specify from the two options what exactly you want to do.
+When you run the project (run the main.py in the "src" folder) you can navigate through the menues by entering the required input. In the first layer you can choose if you want to explore the dataset or if you want to visualize some data. In the second layer you can then specify from the two options what exactly you want to do.
 
 ## Project Description
 Our project is all about making a tool for Airbnb 🏠. We're a group of students learning Python in the Course "Programming for Data Science". With this project, we're diving into real data to learn how to analyze it. Our goal is to build a tool that's easy to use and helps people understand Airbnb listings better. We're excited to learn and create something useful for others in the process!
