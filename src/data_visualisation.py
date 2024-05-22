@@ -40,13 +40,25 @@ def neighborhood_selector():
     neighborhood = input("Enter neighborhood: ")
     return neighborhood
 
-def visualisation_by_room_type(room_type, neighbourhood):
+def visualisation_by_all_room_types(neighbourhood):
+    """
+    Method to visualize the cost information by room type for all types together
+    """
+    print("Cost information by room type:")
+    sns.set_theme(style="whitegrid")
+    sns.barplot(x='room type', y='price', data=df[(df['neighbourhood'] == neighbourhood)])
+    plt.title(f'Rating Information for {neighbourhood}')
+    plt.show()
+    fu.print_separator()
+
+def visualisation_by_specific_room_type(room_type, neighbourhood):
     """
     Method to visualize the cost information by room type for a chosen neighbourhood
     """
     print("Cost information by room type:")
     sns.set_theme(style="whitegrid")
-    sns.barplot(x='room type', y='price', data=df[(df['room type'] == room_type) & (df['neighbourhood'] == neighbourhood)])
+    sns.barplot(x='room type', y='price', data=df[(df['room type'] == room_type) &
+                                                  (df['neighbourhood'] == neighbourhood)])
     plt.title(f'Cost Information for {neighbourhood}')
     plt.show()
     fu.print_separator()

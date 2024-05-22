@@ -9,6 +9,7 @@ functions:
 import pandas as pd
 import data_manipulation as dm
 import load_and_fix_data as lf
+import file_utils as fu
 
 # Load data
 loader = lf.LoadAndFixData()
@@ -41,6 +42,7 @@ def explore_dataset():
             neighbor_info = dm.NeighborhoodAnalyzer(df)
             neighbor_info.display_neighborhood_info()
         elif choice == '5':
+            fu.print_separator()
             break
         else:
             print("Invalid choice. Please enter a valid option.")
