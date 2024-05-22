@@ -1,2 +1,4 @@
 # Data manipulation
-implemantation of
+## First release
+- implemantation of first rows
+- implementation of 
