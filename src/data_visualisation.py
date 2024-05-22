@@ -16,14 +16,18 @@ import load_and_fix_data as lf
 loader = lf.LoadAndFixData()
 df = loader.load_and_fix_data()
 
-def roomtype_selector():
+def roomtype_selector(neighborhood):
     """
     Method to select the room type
     """
     print("Room types available:")
-    print(df['room type'].unique())
+    room_types = df[df['neighbourhood'] == neighborhood]['room type'].unique()
+    print(room_types)
     fu.print_separator()
     room_type = input("Enter room type: ")
+    while room_type not in room_types:
+        print("Invalid room type. Please enter a room type from the list.")
+        room_type = input("Enter room type: ")
     return room_type
 
 def neighborhood_selector():
@@ -36,32 +40,35 @@ def neighborhood_selector():
     neighborhood = input("Enter neighborhood: ")
     return neighborhood
 
-def visualisation_by_room_type(room_type):
+def visualisation_by_room_type(room_type, neighbourhood):
     """
-    Method to visualize the cost information by room type
+    Method to visualize the cost information by room type for a chosen neighbourhood
     """
     print("Cost information by room type:")
     sns.set_theme(style="whitegrid")
-    sns.barplot(x='room type', y='price', data=df[df['room type'] == room_type])
+    sns.barplot(x='room type', y='price', data=df[(df['room type'] == room_type) & (df['neighbourhood'] == neighbourhood)])
+    plt.title(f'Cost Information for {neighbourhood}')
     plt.show()
     fu.print_separator()
 
-def visualisation_by_neighborhood(neighborhood):
+def visualisation_by_neighborhood(neighbourhood):
     """
-    Method to visualize the cost information by neighborhood
+    Method to visualize the cost information by neighbourhood
     """
-    print("Cost information by neighborhood:")
+    print("Cost information by neighbourhood:")
     sns.set_theme(style="whitegrid")
-    sns.barplot(x='neighbourhood', y='price', data=df[df['neighbourhood'] == neighborhood])
+    sns.barplot(x='neighbourhood', y='price', data=df[df['neighbourhood'] == neighbourhood])
+    plt.title(f'Cost Information for {neighbourhood}')
     plt.show()
     fu.print_separator()
 
-def visualisation_by_rating():
+def visualisation_by_rating(neighbourhood):
     """
-    Method to visualize the cost information by rating
+    Method to visualize the cost information by rating for a chosen room type and neighbourhood
     """
     print("Cost information by rating:")
     sns.set_theme(style="whitegrid")
-    sns.barplot(x='rating', y='price', data=df)
+    sns.barplot(x='review rate number', y='price', data=df[(df['neighbourhood'] == neighbourhood)])
+    plt.title(f'Rating Information for {neighbourhood}')
     plt.show()
     fu.print_separator()

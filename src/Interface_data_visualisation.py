@@ -21,6 +21,8 @@ df = loader.load_and_fix_data()
 
 def visualize_dataset():
 
+    print("\nWhich neighbourhood do you want to visualize?\n")
+    neighbourhood = dv.neighborhood_selector()
     print("\nWhat are your wishes?\n")
 
     while True:
@@ -28,22 +30,24 @@ def visualize_dataset():
         print("1. Visualize cost information by room type")
         print("2. Visualize cost information by neighborhood")
         print("3. Visualize cost information by rating")
-        print("4. Back to main menu")
+        print("4. Explore a different neighbourhood")
+        print("5. Back to main menu")
         choice = input("\nChoose wise: ")
 
         if choice == '1':
             fu.print_separator()
             print("Please enter the room type you want to visualize:")
-            room_type = dv.roomtype_selector()
-            dv.visualisation_by_room_type(room_type)
+            room_type = dv.roomtype_selector(neighbourhood)
+            dv.visualisation_by_room_type(room_type, neighbourhood)
         elif choice == '2':
             fu.print_separator()
-            print("Please enter the neighborhood you want to visualize:")
-            neighborhood = dv.neighborhood_selector()
-            dv.visualisation_by_neighborhood(neighborhood) 
+            dv.visualisation_by_neighborhood(neighbourhood)
         elif choice == '3':
-            dv.visualisation_by_rating()
+            dv.visualisation_by_rating(neighbourhood)
         elif choice == '4':
+            print("\nWhich neighbourhood do you want to visualize?\n")
+            neighbourhood = dv.neighborhood_selector()
+        elif choice == '5':
             break
         else:
-            print("Invalid choice. Please enter a valid option.")
+            print("Invalid choice. Please enter a number between 1 and 4.")
