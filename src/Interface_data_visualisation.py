@@ -11,6 +11,10 @@ import data_visualisation as dv
 import load_and_fix_data as lf
 import file_utils as fu
 
+# Set the display options
+pd.set_option('display.max_rows', None)
+pd.set_option('display.max_columns', None)
+
 # Load data
 loader = lf.LoadAndFixData()
 df = loader.load_and_fix_data()
