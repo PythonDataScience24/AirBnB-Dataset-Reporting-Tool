@@ -7,6 +7,9 @@
 - implementation of neighborhood and room type
 - implementation of the interfaces
 
+## Fourth release
+- changed the statistc function to only get statistic for numeric columns
+
 # Data visualisation
 ## Second release
 - implementation of the interfaces
