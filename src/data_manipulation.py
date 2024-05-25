@@ -132,16 +132,16 @@ class NeighborhoodAnalyzer: # pylint: disable=too-few-public-methods
         print(df['neighbourhood'].unique())
 
         fu.print_separator()
-        neighborhood = input("Choose a neighborhood: ")
+        neighborhood = input("Choose a neighborhood: ").strip().lower()
 
         fu.print_separator()
         print(df['room type'].unique())
 
         fu.print_separator()
-        room_type = input("Choose a room type: ")
+        room_type = input("Choose a room type: ").strip().lower()
 
-        filtered_data = self.data_frame[(self.data_frame['neighbourhood'] == neighborhood)
-                                        & (self.data_frame['room type'] == room_type)]
+        filtered_data = self.data_frame[(self.data_frame['neighbourhood'].str.lower() == neighborhood)
+                                        & (self.data_frame['room type'].str.lower() == room_type)]
         if filtered_data.empty:
             print("No data found for the given neighborhood and room type.")
             fu.print_separator()
