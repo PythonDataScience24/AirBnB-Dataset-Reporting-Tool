@@ -49,19 +49,27 @@ class ColumnStatistics: # pylint: disable=too-few-public-methods
         """
         Method to display column statistics of a specific column
         """
+
+        #filter for numeric columns only
+        numeric_columns = self.data_frame.select_dtypes(include=['number']).columns
+        #exclude irrelevant numeric colummns
+        excluded_columns = {'id', 'host id'}
+        numeric_columns = [col for col in numeric_columns if col not in excluded_columns]
+        numeric_df = self.data_frame[numeric_columns]
+
         fu.print_separator()
-        print("Columns in the dataset:")
-        print(df.columns.unique())
+        print("Numeric columns in the dataset:")
+        print(numeric_df.columns.unique())
 
         fu.print_separator()
         column_name = input("\nStatistic summary of the following column: ")
-        if column_name in self.data_frame.columns:
+        if column_name in numeric_columns:
             fu.print_separator()
             print(f"Summary statistics for '{column_name}':")
             print(self.data_frame[column_name].describe())
             fu.print_separator()
         else:
-            print("Column not found.")
+            print("Column not found or not available for numeric statistics.")
             fu.print_separator()
 
 
