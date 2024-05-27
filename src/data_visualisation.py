@@ -47,7 +47,7 @@ def visualisation_by_all_room_types(neighbourhood):
     print("Cost information by room type:")
     sns.set_theme(style="whitegrid")
     sns.barplot(x='room type', y='price', data=df[(df['neighbourhood'] == neighbourhood)])
-    plt.title(f'Rating Information for {neighbourhood}')
+    plt.title(f'Cost Information for {neighbourhood}')
     plt.show()
     fu.print_separator()
 
