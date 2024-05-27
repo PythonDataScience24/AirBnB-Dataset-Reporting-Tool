@@ -23,7 +23,8 @@ This project stands out for its simplicity, yet comprehensive functionality. It 
 
 ## How to Get Started 🚀
 1. **Download Data:** Obtain the dataset from Kaggle.
-2. **Installation:** Install necessary Python libraries.
+2. **Installation:** Install necessary Python libraries using the following command: pip install -r requirements.txt
+
 3. **Execution:** Run the Python script to start exploring the dataset, selecting data subsets, and generating visualizations.
 
 ## Where to Find Key Resources
