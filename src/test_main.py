@@ -10,7 +10,16 @@ from unittest import mock
 from src.main import user_interface
 
 
+
 class TestUserInterface(unittest.TestCase):
+    """
+    This class contains unit tests for the user_interface function in the main.py module.
+
+    The tests use the unittest.mock.patch decorator to replace the built-in input function 
+    and the explore_dataset and visualize_dataset functions from the Interface_data_manipulation 
+    and Interface_data_visualisation modules, respectively. This allows the tests to simulate 
+    user input and check that the correct functions are called based on this input.
+    """
 
     def test_explore_dataset(self):
         """
