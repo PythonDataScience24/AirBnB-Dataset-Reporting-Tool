@@ -20,6 +20,9 @@
 - implementation of neighborhoor
 - implementation of rating
 
+## Fourth release
+- adding a price information for all rooms
+
 # Testing
 ## Third release
 - implementation of the test unit

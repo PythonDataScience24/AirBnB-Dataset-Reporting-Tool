@@ -29,7 +29,7 @@ def visualize_dataset():
         print("1. Visualize cost information by all room types")
         print("2. Visualize cost information by specific room type")
         print("3. Visualize cost information by neighborhood")
-        print("5. Visualize cost information by rating")
+        print("4. Visualize cost information by rating")
         print("5. Explore a different neighbourhood")
         print("6. Back to main menu")
         choice = input("\nChoose wise: ")
